@@ -53,7 +53,7 @@ namespace HelloMonitor {
         /// <summary>
         /// The size of the resize border around the window
         /// </summary>
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
 
         /// <summary>
         /// The size of the resize border around the window, taking into account the outer margin
@@ -109,6 +109,8 @@ namespace HelloMonitor {
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Info;
 
         #endregion
 

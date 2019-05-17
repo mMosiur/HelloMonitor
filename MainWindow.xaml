@@ -79,8 +79,8 @@
                                         </Button>
 
                                         <!-- Title -->
-                                        <Viewbox Grid.Column="1" Margin="0">
-                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Uniwersytet Marii Curie-Skłodowskiej w Lublinie'}" />
+                                        <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
+                                            <TextBlock FontFamily="{StaticResource LatoBold}" Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Uniwersytet Marii Curie-Skłodowskiej w Lublinie'}" />
                                         </Viewbox>
 
                                         <!-- Window Buttons
@@ -176,7 +176,7 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        
+        <Frame x:Name="NameFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
     </Grid>
 
 </Window>
