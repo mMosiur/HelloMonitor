@@ -1,0 +1,38 @@
+﻿<local:BasePage x:Class="HelloMonitor.InstagramPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HelloMonitor"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="700"
+      Title="InstagramPage">
+
+    <Border>
+        <Border.Background>
+            <SolidColorBrush Color="{StaticResource BackgroundLight}" Opacity="1"/>
+        </Border.Background>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center">
+            <Border Background="{StaticResource ForegroundLightBrush}"
+                    CornerRadius="10"
+                    Padding="15 40 15 15"
+                    Width="400"
+                    Margin="50 50 50 0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+                </Border.Effect>
+                <StackPanel>
+                    <Image Source="https://instagram.fwaw3-1.fna.fbcdn.net/vp/f186143dab350d89ceef57fc3eea1a56/5D6F0CC5/t51.2885-15/sh0.08/e35/p750x750/60446749_408590359769009_2956838044579153702_n.jpg?_nc_ht=instagram.fwaw3-1.fna.fbcdn.net"/>
+                    <TextBlock Text="Instagram"
+                               FontSize="{StaticResource FontSizeRegular}"
+                               FontFamily="{StaticResource LatoRegular}"
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" />
+                    <Button Content="Test" Click="Button_Click"/>
+                </StackPanel>
+
+            </Border>
+        </StackPanel>
+    </Border>
+</local:BasePage>
