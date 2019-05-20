@@ -20,7 +20,7 @@ namespace HelloMonitor {
         /// <summary>
         /// The animation to play when te page is unloaded
         /// </summary>
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
+        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.FadeOut;
 
         /// <summary>
         /// The time any slide animation takes to complete
@@ -41,6 +41,7 @@ namespace HelloMonitor {
 
             // Listen out for the page loading
             this.Loaded += BasePage_Loaded;
+            
         }
 
         #endregion
@@ -69,7 +70,8 @@ namespace HelloMonitor {
                     // Start the animation
                     await this.SlideAndFadeInFromLeft(this.SlideSeconds);
                     break;
-                case PageAnimation.SlideAndFadeOutToLeft:
+                case PageAnimation.FadeOut:
+                    await this.FadeOut(this.SlideSeconds);
                     break;
             }
         }

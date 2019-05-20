@@ -71,14 +71,23 @@
     <Compile Include="Animation\PageAnimations.cs" />
     <Compile Include="Animation\StoryboardHelpers.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Mediator.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InstaPage.xaml.cs">
+      <DependentUpon>InstaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Base\EventArgs.cs" />
+    <Compile Include="ViewModel\Base\EventRaiser.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\PageViewModels\InstaPageViewModel.cs" />
+    <Compile Include="ViewModel\PageViewModels\InfoPageViewModel.cs" />
+    <Compile Include="ViewModel\Base\IPageViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
@@ -94,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InstaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

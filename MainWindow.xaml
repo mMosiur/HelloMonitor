@@ -149,7 +149,6 @@
                                         <!-- Navigation Area -->
                                         <StackPanel Grid.Column="2">
                                             
-                                            
                                         </StackPanel>
 
                                     </Grid>
@@ -176,7 +175,7 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="NameFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+        <Frame x:Name="NameFrame" Content="{Binding CurrentPageViewModel}" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 </Window>

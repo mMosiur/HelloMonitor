@@ -12,7 +12,6 @@ namespace HelloMonitor {
             switch ((ApplicationPage)value) {
                 case ApplicationPage.Info:
                     return new InfoPage();
-
                 default:
                     Debugger.Break();
                     return null;

@@ -1,12 +1,12 @@
-﻿<local:BasePage x:Class="HelloMonitor.InfoPage"
+﻿<local:BasePage x:Class="HelloMonitor.InstaPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelloMonitor"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="700"
-      Title="InfoPage">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InstaPage">
 
     <Border>
         <Border.Background>
@@ -24,15 +24,16 @@
                     <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                 </Border.Effect>
                 <StackPanel>
-                    <Image Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg"/>
-                    <TextBlock Text="Aktualności"
+                    <Image Source="https://instagram.fbud2-1.fna.fbcdn.net/vp/619c76459d2665cfc999ac8518bab075/5D79547F/t51.2885-15/sh0.08/e35/p750x750/60408921_2857124560969391_8699709420579857940_n.jpg?_nc_ht=instagram.fbud2-1.fna.fbcdn.net"/>
+                    <TextBlock Text="Instagram"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
-                    <Button Content="Przycisk" Command="{Binding GoTo2}"/>
+                    <Button Content="Przycisk" Command="{Binding GoTo1}"/>
                 </StackPanel>
 
             </Border>
         </StackPanel>
     </Border>
+    
 </local:BasePage>

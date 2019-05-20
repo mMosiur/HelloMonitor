@@ -12,8 +12,8 @@
         /// </summary>
         SlideAndFadeInFromLeft = 1,
         /// <summary>
-        /// Page slides out and page fades out to the left
+        /// Page fades out
         /// </summary>
-        SlideAndFadeOutToLeft = 2,
+        FadeOut = 2,
     }
 }
