@@ -140,8 +140,6 @@ namespace HelloMonitor
             }
         }
 
-        
-
         #endregion
 
         #region Commands
