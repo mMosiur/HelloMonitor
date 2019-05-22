@@ -73,11 +73,20 @@
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\BusesPage.xaml.cs">
+      <DependentUpon>BusesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DabPage.xaml.cs">
+      <DependentUpon>DabPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InstaPage.xaml.cs">
       <DependentUpon>InstaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SideMenuUserControl.xaml.cs">
+      <DependentUpon>SideMenuUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
@@ -85,9 +94,12 @@
     <Compile Include="ViewModel\Base\EventArgs.cs" />
     <Compile Include="ViewModel\Base\EventRaiser.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\PageViewModels\DabPageViewModel.cs" />
+    <Compile Include="ViewModel\PageViewModels\BusesPageViewModel.cs" />
     <Compile Include="ViewModel\PageViewModels\InstaPageViewModel.cs" />
     <Compile Include="ViewModel\PageViewModels\InfoPageViewModel.cs" />
     <Compile Include="ViewModel\Base\IPageViewModel.cs" />
+    <Compile Include="ViewModel\UserControlViewModels\SideMenuUserControlViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
@@ -102,6 +114,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\BusesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DabPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +149,10 @@
     <Page Include="Styles\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SideMenuUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

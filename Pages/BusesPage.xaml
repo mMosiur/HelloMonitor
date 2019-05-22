@@ -1,12 +1,12 @@
-﻿<local:BasePage x:Class="HelloMonitor.InfoPage"
+﻿<local:BasePage x:Class="HelloMonitor.BusesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelloMonitor"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="700"
-      Title="InfoPage">
+      d:DesignHeight="800" d:DesignWidth="600"
+      Title="BusesPage">
 
     <Border>
         <Border.Background>
@@ -25,13 +25,15 @@
                     <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                 </Border.Effect>
                 <StackPanel>
-                    <Image Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg"/>
-                    <TextBlock Text="Aktualności"
+                    <Image Source="http://t-eska.cdn.smcloud.net/regionalna/t/2/t/image/e55613e2bd3089aae8616807fd2519081pW7qIAF-ztm1.jpg/ru-0-r-700,400-q-80-n-e55613e2bd3089aae8616807fd2519081pW7qIAFztm1.jpg"/>
+                    <TextBlock Text="Autobusy"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
                 </StackPanel>
+
             </Border>
         </StackPanel>
     </Border>
+    
 </local:BasePage>

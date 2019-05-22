@@ -140,7 +140,7 @@ namespace HelloMonitor
             }
         }
 
-        //public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Info;
+        
 
         #endregion
 
@@ -171,6 +171,16 @@ namespace HelloMonitor
         private void OnGo2Screen(object obj)
         {
             ChangeViewModel(PageViewModels[1]);
+        }
+
+        private void OnGo3Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[2]);
+        }
+
+        private void OnGo4Screen(object obj)
+        {
+            ChangeViewModel(PageViewModels[3]);
         }
 
         #endregion
@@ -208,11 +218,15 @@ namespace HelloMonitor
 
             PageViewModels.Add(new InfoPageViewModel());
             PageViewModels.Add(new InstaPageViewModel());
+            PageViewModels.Add(new BusesPageViewModel());
+            PageViewModels.Add(new DabPageViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
 
             Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
             Mediator.Subscribe("GoTo2Screen", OnGo2Screen);
+            Mediator.Subscribe("GoTo3Screen", OnGo3Screen);
+            Mediator.Subscribe("GoTo4Screen", OnGo4Screen);
         }
 
         #endregion

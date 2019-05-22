@@ -2,7 +2,7 @@
 
 namespace HelloMonitor
 {
-    class InstaPageViewModel : BaseViewModel, IPageViewModel
+    class BusesPageViewModel : BaseViewModel, IPageViewModel
     {
     }
 }

@@ -7,7 +7,10 @@
         /// <summary>
         /// The initial info page
         /// </summary>
-        Info = 0,
-        Insta = 1,
+        None = 0,
+        Info = 1,
+        Insta = 2,
+        Buses = 3,
+        Dab = 4
     }
 }

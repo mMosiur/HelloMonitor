@@ -15,7 +15,7 @@ namespace HelloMonitor {
         /// <summary>
         /// The animation to play when te page is first loaded
         /// </summary>
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromLeft;
+        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.FadeIn;
 
         /// <summary>
         /// The animation to play when te page is unloaded
@@ -41,6 +41,7 @@ namespace HelloMonitor {
 
             // Listen out for the page loading
             this.Loaded += BasePage_Loaded;
+            this.Unloaded += BasePage_Unloaded;
             
         }
 
@@ -57,20 +58,34 @@ namespace HelloMonitor {
             // Animate the page in
             await AnimateIn();
         }
+        private async void BasePage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Animate the page out
+            await AnimateOut();
+        }
 
         /// <summary>
         /// Animates in this page
         /// </summary>
         /// <returns></returns>
         public async Task AnimateIn() {
-            switch (this.PageLoadAnimation) {
+        switch (this.PageLoadAnimation) {
+            case PageAnimation.None:
+                return;
+            case PageAnimation.FadeIn:
+                // Start the animation
+                await this.FadeIn(this.SlideSeconds);
+                break;
+        }
+        }
+        public async Task AnimateOut()
+        {
+            switch (this.PageUnloadAnimation)
+            {
                 case PageAnimation.None:
                     return;
-                case PageAnimation.SlideAndFadeInFromLeft:
-                    // Start the animation
-                    await this.SlideAndFadeInFromLeft(this.SlideSeconds);
-                    break;
                 case PageAnimation.FadeOut:
+                    // Start the animation
                     await this.FadeOut(this.SlideSeconds);
                     break;
             }

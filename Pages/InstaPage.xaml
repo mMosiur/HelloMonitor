@@ -18,6 +18,7 @@
             <Border Background="{StaticResource ForegroundLightBrush}"
                     CornerRadius="10"
                     Padding="15 40 15 15"
+                    Height="600"
                     Width="400"
                     Margin="50 50 50 0">
                 <Border.Effect>
@@ -29,7 +30,6 @@
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
-                    <Button Content="Przycisk" Command="{Binding GoTo1}"/>
                 </StackPanel>
 
             </Border>

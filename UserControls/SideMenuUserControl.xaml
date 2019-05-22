@@ -6,24 +6,48 @@
              xmlns:local="clr-namespace:HelloMonitor"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="{StaticResource ForegroundLightBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:SideMenuButtonUserControl Grid.Row="0">
-            Action 1
-        </local:SideMenuButtonUserControl>
-        <local:SideMenuButtonUserControl Grid.Row="1">
-            Action 2
-        </local:SideMenuButtonUserControl>
-        <local:SideMenuButtonUserControl Grid.Row="2">
-            Action 3
-        </local:SideMenuButtonUserControl>
-        <local:SideMenuButtonUserControl Grid.Row="3">
-            Action 4
-        </local:SideMenuButtonUserControl>
+        <Button Grid.Row="0"
+                    Margin="4 1 10 10"
+                    Style="{StaticResource SideMenuButton}"
+                    Content="Aktualności"
+                    Command="{Binding GoTo1}">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
+        <Button  Grid.Row="1"
+                 Margin="4 1 10 10"
+                 Style="{StaticResource SideMenuButton}"
+                 Content="Instagram"
+                 Command="{Binding GoTo2}">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
+        <Button Grid.Row="2"
+                    Margin="4 1 10 10"
+                    Style="{StaticResource SideMenuButton}"
+                    Content="Autobusy"
+                    Command="{Binding GoTo3}">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
+        <Button  Grid.Row="3"
+                 Margin="4 1 10 10"
+                 Style="{StaticResource SideMenuButton}"
+                 Content="Daby"
+                 Command="{Binding GoTo4}">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
     </Grid>
 </UserControl>

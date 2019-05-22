@@ -11,6 +11,12 @@
             <DataTemplate DataType="{x:Type local:InstaPageViewModel}">
                 <local:InstaPage />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type local:BusesPageViewModel}">
+                <local:BusesPage />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:DabPageViewModel}">
+                <local:DabPage />
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Order is important -->
                 <ResourceDictionary Source="Styles/Colors.xaml" />

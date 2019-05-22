@@ -147,13 +147,9 @@
                                         </Border>
 
                                         <!-- Navigation Area -->
-                                        <StackPanel Grid.Column="2">
-                                            
-                                        </StackPanel>
+                                        <local:SideMenuUserControl Grid.Column="2"/>
 
                                     </Grid>
-
-                                    
 
                                 </Grid>
 
@@ -175,7 +171,7 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="NameFrame" Content="{Binding CurrentPageViewModel}" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="NameFrame2" Content="{Binding CurrentPageViewModel}" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 </Window>
