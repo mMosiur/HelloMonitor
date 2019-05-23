@@ -30,6 +30,11 @@
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
+                    <Label Name="dabCounterLabel" Content="0" 
+                               FontSize="54px"
+                               FontFamily="{StaticResource LatoRegular}"
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" 
+                               HorizontalAlignment="Center" />
                 </StackPanel>
 
             </Border>

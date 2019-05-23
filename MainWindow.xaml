@@ -18,6 +18,7 @@
         Width="1280">
 
     <Window.Resources>
+        
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -168,8 +169,9 @@
             CornerRadius="0"
             GlassFrameThickness="0"
             />
+        
     </WindowChrome.WindowChrome>
-
+    
     <Grid Background="{StaticResource ForegroundLightBrush}">
         <Frame x:Name="NameFrame2" Content="{Binding CurrentPageViewModel}" NavigationUIVisibility="Hidden"/>
     </Grid>
