@@ -25,7 +25,7 @@ namespace HelloMonitor {
         /// <summary>
         /// The time any slide animation takes to complete
         /// </summary>
-        public float SlideSeconds { get; set; } = 0.8f;
+        public float SlideSeconds { get; set; } = 0.4f;
 
         #endregion
 

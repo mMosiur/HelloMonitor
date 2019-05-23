@@ -200,7 +200,7 @@ namespace HelloMonitor
             };
 
             // Create commands
-            MenuCommand = new RelayCommand(x => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            //MenuCommand = new RelayCommand(x => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
 
             // Fix window resize issue
             var resizer = new WindowResizer(mWindow);
