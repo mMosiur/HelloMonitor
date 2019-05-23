@@ -18,7 +18,6 @@ namespace HelloMonitor
     public partial class MainWindow : Window
     {
         private KinectSensor sensor;
-        private DrawingImage imageSource;
         private Hand hand;
         private DabCounter dabCounter;
 
@@ -37,7 +36,7 @@ namespace HelloMonitor
             dabCounter = new DabCounter();
 
             SetupSlideDispatcher();
-            //CreateAnEllipse();
+            CreateAnEllipse();
             SetupDispatcher();
         }
 
@@ -45,20 +44,21 @@ namespace HelloMonitor
         {
             // Create an Ellipse    
             mouseEllipse = new System.Windows.Shapes.Ellipse();
-            mouseEllipse.Height = 100;
-            mouseEllipse.Width = 100;
+            mouseEllipse.Height = 50;
+            mouseEllipse.Width = 50;
             // Create a blue and a black Brush    
             SolidColorBrush blueBrush = new SolidColorBrush();
-            blueBrush.Color = Colors.Blue;
+            blueBrush.Color = Colors.GhostWhite;
             SolidColorBrush blackBrush = new SolidColorBrush();
-            blackBrush.Color = Colors.Black;
+            blackBrush.Color = Colors.DarkGray;
             // Set Ellipse's width and color    
             mouseEllipse.StrokeThickness = 4;
             mouseEllipse.Stroke = blackBrush;
             // Fill rectangle with blue color    
             mouseEllipse.Fill = blueBrush;
-            // Add Ellipse to the Grid.    
-            //GridForMouse.Children.Add(mouseEllipse);
+            mouseEllipse.Opacity = 0.5;
+            // Add Ellipse to the Grid. 
+            mainGrid.Children.Add(mouseEllipse);
         }
 
         /// <summary>
@@ -183,20 +183,25 @@ namespace HelloMonitor
                 }
 
                 Point p2 = hand.LastPoint();
-                int x = (int)(p2.X * 3);
-                int y = (int)(p2.Y * 2.25);
-
+                //int x = (int)(p2.X * 3);
+                //int y = (int)(p2.Y * 2.25);
+                int x = (int)(p2.X);
+                int y = (int)(p2.Y);
                 NativeMethods.SetCursorPos(x, y);
 
-                double left = x - (1980 / 2);
-                double top = y - (1080 / 2);
+                double left = x - (1980);
+                double top = y - (1080);
 
-                mouseEllipse.Margin = new Thickness(left, top, 0, 0);
+               
             }
             else
             {
                 hand.resetSmallRatius();
             }
+        }
+        private float remap(float value, float from1, float to1, float from2, float to2)
+        {
+            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
         private Point SkeletonPointToScreen(SkeletonPoint skelpoint)
         {
@@ -232,9 +237,10 @@ namespace HelloMonitor
             int x = (int)p.X;
             int y = (int)p.Y;
 
-            double left = x;// - (1980 / 2);
-            double top = y;// - (1080 / 2);
-
+            double left = (x - (mainGrid.ActualHeight / 2)) * 2;
+            double right = (y - (mainGrid.ActualWidth / 2)) * 2;   
+            
+            mouseEllipse.Margin = new Thickness(left, right, 0, 0);
             //mouseEllipse.Margin = new Thickness(left, top, 0, 0);
         }
 
@@ -254,5 +260,8 @@ namespace HelloMonitor
             //    ControlsGrid.Width = 0;
             setSlideAuto();
         }
+
+
     }
+    
 }

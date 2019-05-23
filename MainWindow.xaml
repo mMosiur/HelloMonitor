@@ -27,7 +27,7 @@
                         <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
 
                             <!-- Main window outline -->
-                            <Grid>
+                            <Grid >
 
                                 <!-- Opacity mask for corners on grid -->
                                 <Border x:Name="Container"
@@ -171,8 +171,8 @@
             />
         
     </WindowChrome.WindowChrome>
-    
-    <Grid Background="{StaticResource ForegroundLightBrush}">
+
+    <Grid Name="mainGrid" Background="{StaticResource ForegroundLightBrush}">
         <Frame x:Name="NameFrame2" Content="{Binding CurrentPageViewModel}" NavigationUIVisibility="Hidden"/>
     </Grid>
 
