@@ -12,7 +12,7 @@
         <Border.Background>
             <SolidColorBrush Color="{StaticResource BackgroundLight}" Opacity="1"/>
         </Border.Background>
-        <StackPanel VerticalAlignment="Center"
+        <!--<StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     TextBlock.TextAlignment="Center">
             <Border Background="{StaticResource ForegroundLightBrush}"
@@ -25,13 +25,13 @@
                     <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                 </Border.Effect>
                 <StackPanel>
-                    <Image Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg"/>
-                    <TextBlock Text="Aktualności"
+                    --><!--<Image Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg"/>-->
+                    <!--<TextBlock Text="Aktualności"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
-                               Foreground="{StaticResource ForegroundVeryDarkBrush}" />
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" />--><!--
                 </StackPanel>
             </Border>
-        </StackPanel>
+        </StackPanel>-->
     </Border>
 </local:BasePage>

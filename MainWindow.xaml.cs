@@ -12,7 +12,9 @@ namespace HelloMonitor
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
+    using System.Windows.Media.Imaging;
 
     [CLSCompliant(false)]
     public partial class MainWindow : Window
@@ -34,11 +36,15 @@ namespace HelloMonitor
 
             hand = new Hand(20);
             dabCounter = new DabCounter();
+            //System.Windows.Resources.StreamResourceInfo info = Application.GetResourceStream(new Uri("Images/kac.cur", UriKind.Relative));
+            //this.Cursor = new Cursor(info.Stream);
 
             SetupSlideDispatcher();
             CreateAnEllipse();
-            SetupDispatcher();
+            SetupEclipseDispatcher();
         }
+
+      
 
         public void CreateAnEllipse()
         {
@@ -58,7 +64,8 @@ namespace HelloMonitor
             mouseEllipse.Fill = blueBrush;
             mouseEllipse.Opacity = 0.5;
             // Add Ellipse to the Grid. 
-            mainGrid.Children.Add(mouseEllipse);
+
+            OverGrid.Children.Add(mouseEllipse);
         }
 
         /// <summary>
@@ -138,7 +145,7 @@ namespace HelloMonitor
         {
             //Dab counter
             dabCounter.Update(skeleton);
-
+            
             Joint handJoint;
             float downLimit;
 
@@ -211,8 +218,8 @@ namespace HelloMonitor
 
         private void setSlideAuto()
         {
-            if (!dispatcherTimer.IsEnabled)
-                dispatcherTimer.Start();
+            if (!dispatcherTimerSlide.IsEnabled)
+                dispatcherTimerSlide.Start();
         }
 
         private void setSlideManual(int index)
@@ -223,25 +230,24 @@ namespace HelloMonitor
         /// <summary>
         /// Dispatchers
         /// </summary>
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-        void SetupDispatcher()
+        System.Windows.Threading.DispatcherTimer dispatcherEclipseTimer = new System.Windows.Threading.DispatcherTimer();
+        void SetupEclipseDispatcher()
         {
-            dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-            dispatcherTimer.Start();
+            dispatcherEclipseTimer.Tick += dispatcherEclipceTimer_Tick;
+            dispatcherEclipseTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dispatcherEclipseTimer.Start();
         }
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void dispatcherEclipceTimer_Tick(object sender, EventArgs e)
         {
             //NativeMethods.SetCursorPos(100, 100);
             Point p = NativeMethods.GetMousePosition();
             int x = (int)p.X;
             int y = (int)p.Y;
 
-            double left = (x - (mainGrid.ActualHeight / 2)) * 2;
-            double right = (y - (mainGrid.ActualWidth / 2)) * 2;   
+            double x1 = (x - (mainGrid.ActualHeight / 2)) * 2 - 680 + 40;
+            double y2 = (y - (mainGrid.ActualWidth / 2)) * 2 + 410 + 40;   
             
-            mouseEllipse.Margin = new Thickness(left, right, 0, 0);
-            //mouseEllipse.Margin = new Thickness(left, top, 0, 0);
+            mouseEllipse.Margin = new Thickness(x1, y2, 0, 0);
         }
 
         System.Windows.Threading.DispatcherTimer dispatcherTimerSlide = new System.Windows.Threading.DispatcherTimer();
