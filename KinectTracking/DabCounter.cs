@@ -145,7 +145,7 @@ namespace HelloMonitor
         private void playWow()
         {
             System.Diagnostics.Debug.WriteLine("DAB!!!!");
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"F:\Pro\HelloMonitor\Media\wow.wav");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"E:\HelloMonitor\Media\wow.wav");
             player.Play();
             lastDab = (int)(DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
         }

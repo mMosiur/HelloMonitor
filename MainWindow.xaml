@@ -17,7 +17,7 @@
         Height="720"
         Width="1280">
 
-    <WindowChrome.WindowChrome>
+    <!--<WindowChrome.WindowChrome>
         <WindowChrome
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
             CaptionHeight="{Binding TitleHeight}"
@@ -25,7 +25,7 @@
             GlassFrameThickness="0"
             />
 
-    </WindowChrome.WindowChrome>
+    </WindowChrome.WindowChrome>-->
 
 
     <!-- Main window outline -->

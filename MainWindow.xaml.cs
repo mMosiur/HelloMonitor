@@ -41,7 +41,7 @@ namespace HelloMonitor
 
             SetupSlideDispatcher();
             CreateAnEllipse();
-            SetupEclipseDispatcher();
+            //SetupEclipseDispatcher();
         }
 
       
@@ -53,15 +53,15 @@ namespace HelloMonitor
             mouseEllipse.Height = 50;
             mouseEllipse.Width = 50;
             // Create a blue and a black Brush    
-            SolidColorBrush blueBrush = new SolidColorBrush();
-            blueBrush.Color = Colors.GhostWhite;
-            SolidColorBrush blackBrush = new SolidColorBrush();
-            blackBrush.Color = Colors.DarkGray;
+            SolidColorBrush ghostWhiteBrush = new SolidColorBrush();
+            ghostWhiteBrush.Color = Colors.GhostWhite;
+            SolidColorBrush darkGrayBrush = new SolidColorBrush();
+            darkGrayBrush.Color = Colors.DarkGray;
             // Set Ellipse's width and color    
             mouseEllipse.StrokeThickness = 4;
-            mouseEllipse.Stroke = blackBrush;
+            mouseEllipse.Stroke = darkGrayBrush;
             // Fill rectangle with blue color    
-            mouseEllipse.Fill = blueBrush;
+            mouseEllipse.Fill = ghostWhiteBrush;
             mouseEllipse.Opacity = 0.5;
             // Add Ellipse to the Grid. 
 
@@ -112,6 +112,7 @@ namespace HelloMonitor
         private void SensorSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             Skeleton[] skeletons = new Skeleton[0];
+            
 
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame())
             {
@@ -170,36 +171,61 @@ namespace HelloMonitor
                 switch (g)
                 {
                     case Hand.Gesture.SWIPE_LEFT:
-                        //((UserControlAutobus)userControls[0]).label1.Content = "Left";
+                        System.Diagnostics.Debug.WriteLine("Left");
                         setSlideManual(slideIndex--);
 
                         break;
                     case Hand.Gesture.SWIPE_RIGTH:
-                        //((UserControlAutobus)userControls[0]).label1.Content = "Right";
+                        System.Diagnostics.Debug.WriteLine("SWIPE_RIGTH");
                         setSlideManual(slideIndex++);
                         break;
                     case Hand.Gesture.SWIPE_UP:
-                        //((UserControlAutobus)userControls[0]).label1.Content = "Up";
+                        System.Diagnostics.Debug.WriteLine("SWIPE_UP");
                         break;
                     case Hand.Gesture.SWIPE_DOWN:
-                        //((UserControlAutobus)userControls[0]).label1.Content = "Down";
-
+                        System.Diagnostics.Debug.WriteLine("SWIPE_DOWN");
                         break;
                     default:
                         break;
                 }
 
+                //Setting mouse position with scaling 
+                Point headPoint = SkeletonPointToScreen(skeleton.Joints[JointType.Head].Position);
+
                 Point p2 = hand.LastPoint();
-                //int x = (int)(p2.X * 3);
-                //int y = (int)(p2.Y * 2.25);
-                int x = (int)(p2.X);
-                int y = (int)(p2.Y);
+                int x = (int)(p2.X * 3 * 3) - (int)(headPoint.X * 3 * 2) - 500;
+                int y = (int)(p2.Y * 2.25 * 2) - (int)(headPoint.Y * 2.25 ) ;
+                
                 NativeMethods.SetCursorPos(x, y);
 
-                double left = x - (1980);
-                double top = y - (1080);
+                //Moving ellipse with mouse 
+                Point p3 = Mouse.GetPosition(OverGrid);
+                int x3 = (int)p3.X;
+                int y3 = (int)p3.Y;
 
-               
+                double x1 = (x3) * 2 - 1250;
+                double y2 = (y3) * 2 - 630;
+
+                mouseEllipse.Margin = new Thickness(x1, y2, 0, 0);
+
+                //Animation of ellipse
+                double procentageRadius = hand.radiusSmall / hand.radiusBig;
+                double maxThickness = 30;
+                mouseEllipse.StrokeThickness = procentageRadius > 1 ? maxThickness : procentageRadius < 0.1 ? 0.1 * maxThickness : procentageRadius * maxThickness;
+
+
+
+                if(procentageRadius >= 1)
+                {
+                    
+                    mouseEllipse.Fill.Opacity = 0.3;
+                    LeftMouseClick(x, y);
+                }
+                else
+                {
+                    mouseEllipse.Fill.Opacity = 0.3;
+                }
+
             }
             else
             {
@@ -237,15 +263,18 @@ namespace HelloMonitor
             dispatcherEclipseTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             dispatcherEclipseTimer.Start();
         }
+
         private void dispatcherEclipceTimer_Tick(object sender, EventArgs e)
         {
             //NativeMethods.SetCursorPos(100, 100);
-            Point p = NativeMethods.GetMousePosition();
+            //Point p = NativeMethods.GetMousePosition();
+
+            Point p = Mouse.GetPosition(OverGrid);
             int x = (int)p.X;
             int y = (int)p.Y;
 
-            double x1 = (x - (mainGrid.ActualHeight / 2)) * 2 - 680 + 40;
-            double y2 = (y - (mainGrid.ActualWidth / 2)) * 2 + 410 + 40;   
+            double x1 = (x) *2 - 1250;
+            double y2 = (y) *2 - 630;   
             
             mouseEllipse.Margin = new Thickness(x1, y2, 0, 0);
         }
@@ -264,9 +293,31 @@ namespace HelloMonitor
             //    ControlsGrid.Width = widthOfControlPanel;
             //else
             //    ControlsGrid.Width = 0;
-            setSlideAuto();
+            //setSlideAuto();
         }
 
+        public System.Drawing.Point ConvertPoint(Point p)
+        {
+            return new System.Drawing.Point((int)p.X, (int)p.Y);
+        }
+
+        //This is a replacement for Cursor.Position in WinForms
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool SetCursorPos(int x, int y);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        public const int MOUSEEVENTF_LEFTUP = 0x04;
+
+        //This simulates a left mouse click
+        public static void LeftMouseClick(int xpos, int ypos)
+        {
+            SetCursorPos(xpos, ypos);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+        }
 
     }
     
