@@ -76,6 +76,7 @@ namespace HelloMonitor
                 if (radiusSmall < 0)
                     radiusSmall = 0;
             }
+            
             points.Add(p);
             points[points.Count - 1] = ArithmeticAverage2(3);
             

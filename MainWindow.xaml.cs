@@ -23,10 +23,14 @@ namespace HelloMonitor
         private Hand hand;
         private DabCounter dabCounter;
 
+        float lastHandZ = 0;
+
         //Eclipse
         private System.Windows.Shapes.Ellipse mouseEllipse;
         ApplicationPageValueConverter ap = new ApplicationPageValueConverter();
         private int slideIndex = 0;
+
+        
 
         public MainWindow()
         {
@@ -150,10 +154,13 @@ namespace HelloMonitor
             Joint handJoint;
             float downLimit;
 
+            Boolean isLeftHand = false;
+            //Get higher hand left else right
             if (skeleton.Joints[JointType.HandLeft].Position.Y > skeleton.Joints[JointType.HandRight].Position.Y)
             {
                 handJoint = skeleton.Joints[JointType.HandLeft];
                 downLimit = skeleton.Joints[JointType.ElbowLeft].Position.Y;
+                isLeftHand = true;
             }
             else
             {
@@ -162,7 +169,7 @@ namespace HelloMonitor
             }
 
             //Hand has to be higher then
-            if (downLimit < handJoint.Position.Y)
+            if (handJoint.Position.Y > downLimit)
             {
                 Point p = SkeletonPointToScreen(handJoint.Position);
                 hand.Update(p);
@@ -191,9 +198,17 @@ namespace HelloMonitor
 
                 //Setting mouse position with scaling 
                 Point headPoint = SkeletonPointToScreen(skeleton.Joints[JointType.Head].Position);
-
                 Point p2 = hand.LastPoint();
-                int x = (int)(p2.X * 3 * 3) - (int)(headPoint.X * 3 * 2) - 500;
+                int x;
+                if (isLeftHand)
+                {
+                    x = (int)(p2.X * 3 * 3) - 500;
+                }
+                else
+                {
+                    x = (int)(p2.X * 3 * 3) - (int)(headPoint.X * 3 * 2) - 500;
+                }
+
                 int y = (int)(p2.Y * 2.25 * 2) - (int)(headPoint.Y * 2.25 ) ;
                 
                 NativeMethods.SetCursorPos(x, y);
@@ -213,13 +228,16 @@ namespace HelloMonitor
                 double maxThickness = 30;
                 mouseEllipse.StrokeThickness = procentageRadius > 1 ? maxThickness : procentageRadius < 0.1 ? 0.1 * maxThickness : procentageRadius * maxThickness;
 
-
-
                 if(procentageRadius >= 1)
                 {
-                    
                     mouseEllipse.Fill.Opacity = 0.3;
-                    LeftMouseClick(x, y);
+                    System.Diagnostics.Debug.WriteLine(handJoint.Position.Z - lastHandZ);
+                    if (lastHandZ - handJoint.Position.Z > 0.015)
+                    {
+                        LeftMouseClick(x, y);
+                    }
+
+                    lastHandZ = handJoint.Position.Z;
                 }
                 else
                 {
@@ -232,6 +250,7 @@ namespace HelloMonitor
                 hand.resetSmallRatius();
             }
         }
+
         private float remap(float value, float from1, float to1, float from2, float to2)
         {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
