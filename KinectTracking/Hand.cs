@@ -12,11 +12,11 @@ namespace HelloMonitor
     public class Hand
     {
         List<Point> points;
-        double radiusSmall;
-        double radiusBig;
+        public double radiusSmall;
+        public double radiusBig;
         double minDistance;
         double rate;
-        bool tracking;
+        public bool tracking;
         bool wasTracking;
 
         public enum Gesture { SWIPE_LEFT, SWIPE_RIGTH, SWIPE_DOWN, SWIPE_UP, NULL };
@@ -76,6 +76,7 @@ namespace HelloMonitor
                 if (radiusSmall < 0)
                     radiusSmall = 0;
             }
+            
             points.Add(p);
             points[points.Count - 1] = ArithmeticAverage2(3);
             

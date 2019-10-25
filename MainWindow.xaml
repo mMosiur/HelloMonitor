@@ -17,6 +17,7 @@
         Height="720"
         Width="1280">
 
+
     <WindowChrome.WindowChrome>
         <WindowChrome
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
@@ -24,7 +25,6 @@
             CornerRadius="0"
             GlassFrameThickness="0"
             />
-
     </WindowChrome.WindowChrome>
 
 
@@ -161,6 +161,10 @@
         </Grid>
 
     </Grid>
+    
+
+
+
 
 
 

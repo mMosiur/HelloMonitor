@@ -38,11 +38,16 @@
                     <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                 </Border.Effect>
                 <StackPanel>
-                    <Image Source="https://i.ytimg.com/vi/_he2_d7uKlY/maxresdefault.jpg"/>
+                    <Image Source="../Images/lublin.jpg"/>
                     <TextBlock Text="Dab dab dab"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
+                    <Label Name="dabCounterLabel" Content="0" 
+                               FontSize="54px"
+                               FontFamily="{StaticResource LatoRegular}"
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" 
+                               HorizontalAlignment="Center" />
                 </StackPanel>
 
             </Border>

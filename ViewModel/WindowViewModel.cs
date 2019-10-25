@@ -255,7 +255,7 @@ namespace HelloMonitor
             PageViewModels.Add(new BusesPageViewModel());
             PageViewModels.Add(new DabPageViewModel());
 
-            CurrentPageViewModel = PageViewModels[0];
+            CurrentPageViewModel = PageViewModels[3];
 
             Mediator.Subscribe("GoTo1Screen", OnGo1Screen);
             Mediator.Subscribe("GoTo2Screen", OnGo2Screen);

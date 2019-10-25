@@ -235,6 +235,18 @@
   <ItemGroup>
     <Resource Include="logo_background.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yoda.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kac.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lublin.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
