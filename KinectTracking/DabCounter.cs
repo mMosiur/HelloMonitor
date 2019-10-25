@@ -47,6 +47,7 @@ namespace HelloMonitor
             {
                 leftDabFound = false;
                 rightDabFound = false;
+                dabCounter = 0;
             }
 
             if (!leftDabFound && !rightDabFound)
@@ -60,8 +61,8 @@ namespace HelloMonitor
                 {
                     leftDabFound = false;
                     rightDabFound = true;
-                    dabCounter++;
                 }
+                dabCounter++;
             }
             else if (rightDabFound)
             {
@@ -69,18 +70,14 @@ namespace HelloMonitor
                 {
                     leftDabFound = true;
                     rightDabFound = false;
-                    dabCounter++;
                 }
+                dabCounter++;
             }
-        }
-
-        public void Draw(Image<Emgu.CV.Structure.Gray, byte> image)
-        {
         }
 
         private void logs()
         {
-            System.Diagnostics.Debug.WriteLine(lastDab);
+            //System.Diagnostics.Debug.WriteLine(lastDab);
             /*
             System.Diagnostics.Debug.WriteLine(
                 "Przedramie R= " + XYToDegrees(rightHand.Position,  rightElbow.Position) + 
@@ -147,7 +144,8 @@ namespace HelloMonitor
 
         private void playWow()
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"F:\Pro\KinectTracking\wow.wav");
+            System.Diagnostics.Debug.WriteLine("DAB!!!!");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"E:\HelloMonitor\Media\wow.wav");
             player.Play();
             lastDab = (int)(DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
         }

@@ -15,6 +15,19 @@
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     TextBlock.TextAlignment="Center">
+            <StackPanel.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Grid>
+                            <Rectangle Width="100" Height="100">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="MyAnimatedBrush3" Color="White" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </StackPanel.OpacityMask>
             <Border Background="{StaticResource ForegroundLightBrush}"
                     CornerRadius="10"
                     Padding="15 40 15 15"
@@ -24,12 +37,62 @@
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                 </Border.Effect>
+                <Border.OpacityMask>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Grid>
+                                <Rectangle Width="100" Height="100">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush x:Name="MyAnimatedBrush2" Color="White" />
+                                    </Rectangle.Fill>  
+                                </Rectangle>
+                            </Grid>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.OpacityMask>
                 <StackPanel>
                     <Image Source="http://t-eska.cdn.smcloud.net/regionalna/t/2/t/image/e55613e2bd3089aae8616807fd2519081pW7qIAF-ztm1.jpg/ru-0-r-700,400-q-80-n-e55613e2bd3089aae8616807fd2519081pW7qIAFztm1.jpg"/>
                     <TextBlock Text="Autobusy"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
                                Foreground="{StaticResource ForegroundVeryDarkBrush}" />
+
+                    <Button Name="opacityAnimatedButton" Height="89">
+                        A Button
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                        Storyboard.TargetName="opacityAnimatedButton"
+                                        Storyboard.TargetProperty="(Button.Opacity)" 
+                                        From="1" To="0" Duration="0:0:1" AutoReverse="True"  />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <!-- Clicking this button animates the opacity of the brush
+         used to paint its background. -->
+                    <Button Height="84">
+                        A Button
+                        <Button.Background>
+                            <SolidColorBrush x:Name="MyAnimatedBrush" Color="Orange" />
+                        </Button.Background>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                        Storyboard.TargetName="MyAnimatedBrush2"
+                                        Storyboard.TargetProperty="(Brush.Opacity)" 
+                                        From="1" To="0" Duration="0:0:1" AutoReverse="True"  />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
                 </StackPanel>
 
             </Border>
