@@ -19,5 +19,9 @@
         /// Page fades out
         /// </summary>
         FadeOut = 3,
+
+        FadeInBrush = 4,
+
+        FadeOutBrush = 5
     }
 }

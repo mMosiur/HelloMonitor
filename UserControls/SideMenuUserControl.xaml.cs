@@ -11,6 +11,10 @@ namespace HelloMonitor
         {
             InitializeComponent();
             this.DataContext = new SideMenuUserControlViewModel();
+
+            // pobierze linki
+            // podmieni
+            
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)

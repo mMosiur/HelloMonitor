@@ -5,33 +5,75 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HelloMonitor"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="700"
-      Title="InfoPage">
-
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="InfoPage" Loaded="BasePage_Loaded">
     <Border>
-        <Border.Background>
-            <SolidColorBrush Color="{StaticResource BackgroundLight}" Opacity="1"/>
-        </Border.Background>
-        <!--<StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    TextBlock.TextAlignment="Center">
-            <Border Background="{StaticResource ForegroundLightBrush}"
+        <StackPanel 
+            x:Name="mainStackPanel"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            TextBlock.TextAlignment="Center">
+
+            <StackPanel.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Grid>
+                            <Rectangle Width="100" Height="100">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="MyAnimatedBrush3" Color="White" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </StackPanel.OpacityMask>
+
+            <!--<DockPanel MaxHeight="700">-->
+            <!--<Button x:Name="scrollButton" Content="PressMe"></Button>-->
+                <ScrollViewer x:Name="mainScrollViewer" MaxHeight="800" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="itemsControl" ItemsSource="{Binding collection}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel x:Name="newsPanel" CanVerticallyScroll="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            <!--</DockPanel>-->
+
+            <!--<Grid Background="#FFFF" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Border
                     CornerRadius="10"
                     Padding="15 40 15 15"
-                    Height="600"
-                    Width="400"
-                    Margin="50 50 50 0">
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
-                </Border.Effect>
+                    Margin="50 50 50 0" HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+                    </Border.Effect>
+                </Border>
                 <StackPanel>
-                    --><!--<Image Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg"/>-->
-                    <!--<TextBlock Text="Aktualności"
+                    <TextBlock Text="Aktualności"
+                               Grid.Column="1"
                                FontSize="{StaticResource FontSizeRegular}"
                                FontFamily="{StaticResource LatoRegular}"
-                               Foreground="{StaticResource ForegroundVeryDarkBrush}" />--><!--
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" HorizontalAlignment="Center" RenderTransformOrigin="0.195,-0.833" />
+                    <StackPanel x:Name="children_1">
+                        <TextBlock Text="Z głębokim żalem zawiadamiamy, że w dniu 26 września 2019 r. zmarła śp. prof"
+                                   Grid.Column="1" Grid.Row="1"
+                                   TextWrapping="WrapWithOverflow"
+                               FontFamily="{StaticResource LatoRegular}"
+                               Foreground="{StaticResource ForegroundVeryDarkBrush}" HorizontalAlignment="Center" FontSize="7" FlowDirection="RightToLeft" Margin="0" Width="250" />
+                    </StackPanel>
+                <Image x:Name="mainImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="https://phavi.umcs.pl/ph/r,1024,800/agicon/c/2019/0516/87422565cdd49be656af.jpg" Margin="0" HorizontalAlignment="Center" Width="100" Height="100"/>
                 </StackPanel>
-            </Border>
-        </StackPanel>-->
+            </Grid>-->
+        </StackPanel>
     </Border>
 </local:BasePage>

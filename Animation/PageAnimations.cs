@@ -38,12 +38,41 @@ namespace HelloMonitor
             //Wait for it to finish
             await Task.Delay((int)(seconds * 1000));
         }
+
+        public static async Task FadeInBrush(this Page page, float seconds)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+            // Add fade in animation
+            sb.AddFadeInBrush(seconds);
+            // Start animating
+            sb.Begin(page);
+            // Make page visible
+            page.Visibility = Visibility.Visible;
+            //Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
+
         public static async Task FadeOut(this Page page, float seconds)
         {
             // Create the storyboard
             var sb = new Storyboard();
             // Add fade out animation
             sb.AddFadeOut(seconds);
+            // Start animating
+            sb.Begin(page);
+            // Make page visible
+            page.Visibility = Visibility.Visible;
+            //Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
+
+        public static async Task FadeOutBrush(this Page page, float seconds)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+            // Add fade out animation
+            sb.AddFadeOutBrush(seconds);
             // Start animating
             sb.Begin(page);
             // Make page visible
