@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace HelloMonitor
 {
@@ -161,6 +164,11 @@ namespace HelloMonitor
             CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
         }
 
+        private void animateCurrentPageViewModel()
+        {
+            CurrentPageViewModel.animateOut();
+        }
+
         private void OnGo1Screen(object obj)
         {
             ChangeViewModel(PageViewModels[0]);
@@ -214,8 +222,36 @@ namespace HelloMonitor
                 WindowResized();
             };
 
-            PageViewModels.Add(new InfoPageViewModel());
-            PageViewModels.Add(new InstaPageViewModel());
+            string infoURL = "http://212.182.24.47:3001/news";
+            InfoPageViewModel.RootObject infoObject;
+            using (var webClient = new System.Net.WebClient())
+            {
+                var json = webClient.DownloadString(infoURL);
+                infoObject = JsonConvert.DeserializeObject<InfoPageViewModel.RootObject>(json);
+                foreach(InfoPageViewModel.Payload payload in infoObject.payload)
+                {
+                    BitmapSource bitmapSource = new BitmapImage(new Uri(payload.url));
+                    payload.source = bitmapSource;
+                }
+            }
+
+            string instaURL = "http://212.182.24.47:3001/instagram";
+            InstaPageViewModel.RootObject instaObject;
+            using (var webClient = new System.Net.WebClient())
+            {
+                var json = webClient.DownloadString(instaURL);
+                instaObject = JsonConvert.DeserializeObject<InstaPageViewModel.RootObject>(json);
+                foreach (InstaPageViewModel.Payload payload in instaObject.payload)
+                {
+                    // to do
+                    BitmapSource bitmapSource = new BitmapImage(new Uri(payload.photo_url));
+                    //bitmapSource.Freeze();
+                    payload.source = bitmapSource;
+                }
+            }
+
+            PageViewModels.Add(new InfoPageViewModel(infoObject));
+            PageViewModels.Add(new InstaPageViewModel(instaObject));
             PageViewModels.Add(new BusesPageViewModel());
             PageViewModels.Add(new DabPageViewModel());
 

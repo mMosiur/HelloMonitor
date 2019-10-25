@@ -53,6 +53,20 @@ namespace HelloMonitor
             storyboard.Children.Add(animation);
         }
 
+        public static void AddFadeInBrush(this Storyboard storyboard, float seconds)
+        {
+            var animation = new DoubleAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = 0,
+                To = 1
+            };
+
+            Storyboard.SetTargetName(animation, "MyAnimatedBrush3");
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(Brush.Opacity)"));
+            storyboard.Children.Add(animation);
+        }
+
         public static void AddFadeOut(this Storyboard storyboard, float seconds)
         {
             // Create opacity fade out animation
@@ -65,6 +79,21 @@ namespace HelloMonitor
             // Set the target property name
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
             // Add this to the storyboard
+            storyboard.Children.Add(animation);
+        }
+
+        public static void AddFadeOutBrush(this Storyboard storyboard, float seconds)
+        {
+            // Create opacity fade out animation
+            var animation = new DoubleAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = 1,
+                To = 0
+            };
+
+            Storyboard.SetTargetName(animation, "MyAnimatedBrush3");
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(Brush.Opacity)"));
             storyboard.Children.Add(animation);
         }
     }

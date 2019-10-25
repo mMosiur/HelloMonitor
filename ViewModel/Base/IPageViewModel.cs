@@ -1,4 +1,7 @@
 ﻿namespace HelloMonitor
 {
-    public interface IPageViewModel { }
+    public interface IPageViewModel
+    {
+        void animateOut();
+    }
 }

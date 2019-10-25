@@ -4,6 +4,11 @@ namespace HelloMonitor
 {
     class SideMenuUserControlViewModel : BaseViewModel, IPageViewModel
     {
+        public void animateOut()
+        {
+
+        }
+
         private ICommand _goTo1;
         private ICommand _goTo2;
         private ICommand _goTo3;

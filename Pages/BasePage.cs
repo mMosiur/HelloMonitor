@@ -15,17 +15,21 @@ namespace HelloMonitor {
         /// <summary>
         /// The animation to play when te page is first loaded
         /// </summary>
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.FadeIn;
+        //public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.FadeIn;
+        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.FadeInBrush;
+        //public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.None;
+
 
         /// <summary>
         /// The animation to play when te page is unloaded
         /// </summary>
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.FadeOut;
+        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.None;
+        //public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.FadeOutBrush;
 
         /// <summary>
         /// The time any slide animation takes to complete
         /// </summary>
-        public float SlideSeconds { get; set; } = 0.4f;
+        public float SlideSeconds { get; set; } = 0.8f;
 
         #endregion
 
@@ -72,9 +76,12 @@ namespace HelloMonitor {
         switch (this.PageLoadAnimation) {
             case PageAnimation.None:
                 return;
-            case PageAnimation.FadeIn:
-                // Start the animation
-                await this.FadeIn(this.SlideSeconds);
+            //case PageAnimation.FadeIn:
+            //    // Start the animation
+            //    await this.FadeIn(this.SlideSeconds);
+            //    break;
+            case PageAnimation.FadeInBrush:
+                await this.FadeInBrush(this.SlideSeconds);
                 break;
         }
         }
@@ -87,6 +94,9 @@ namespace HelloMonitor {
                 case PageAnimation.FadeOut:
                     // Start the animation
                     await this.FadeOut(this.SlideSeconds);
+                    break;
+                case PageAnimation.FadeOutBrush:
+                    await this.FadeOutBrush(this.SlideSeconds);
                     break;
             }
         }

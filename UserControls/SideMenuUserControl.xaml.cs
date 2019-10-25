@@ -11,6 +11,12 @@ namespace HelloMonitor
         {
             InitializeComponent();
             this.DataContext = new SideMenuUserControlViewModel();
+
+            // pobierze linki
+            // podmieni
+            
         }
+
+        
     }
 }
